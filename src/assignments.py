@@ -16,13 +16,15 @@ def ex1():
     ]
     sort_people(people_list, 'weight', 'desc')
     print(people_list)
-
-def sort_people(people_list, feild, d):
+# method with three parameters 
+def sort_people(people_list, field, d):
+    # if direction is desc then direction is true else false
     if d == 'desc':
         direction = True
     else:
         direction = False
-    people_list.sort(key=lambda p: p[feild], reverse=direction)
+        # sort peole list with key as lambda, parameter p as field and reverse the direction
+    people_list.sort(key=lambda p: p[field], reverse=direction)
 
 def ex2():
     people_list = [
@@ -32,9 +34,11 @@ def ex2():
     ]
     filtered_list = filter_males(people_list)
     print(filtered_list)
-    
+    # method to filter with one parameter people list
 def filter_males(people_list):
+    # create new list and filter using lambda to match sex equals to male in people list 
     new_list = list(filter(lambda p: p['sex'] == 'male', people_list))
+    # return the new list
     return new_list
 
 
@@ -47,11 +51,15 @@ def ex3():
     print(new_people_list)
 
 def calc_bmi(person_list):
+    # helper function with a person dict and adds the bmi key and value
     def calc_person(p):
+        # get the weight and height from the persons dict
         weight = p['weight_kg']
         height = p['height_meters']
+        # calculate the bmi and round it to one decimal place
         bmi = round(weight / height ** 2, 1)
         return {**p, 'bmi': bmi}
+    # map to apply bmi function to each person in the list
     new_list = list(map(calc_person, person_list))
     return new_list
 
@@ -64,6 +72,7 @@ def ex4():
     print(get_people(people_list))
 
 def get_people(people_list):
+    # using a list to filter the people which are equal to or greater than 15 
     new_list = list((p['name'] for p in people_list if p['age'] >= 15))
     return new_list
 

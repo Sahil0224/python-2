@@ -16,8 +16,10 @@ class CarCollector:
     
     @staticmethod
     def _combine(c):
-        # Todo...
+        # get id and price from the car dict
         id = c['id']
         price = c['price']
+        # get make from the card dict using id as key
         make = CarCollector.car_dict[id]
+        # return a new dict with id, make and price
         return {'id': id, 'make': make, 'price': price}
