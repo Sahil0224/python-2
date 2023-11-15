@@ -7,11 +7,12 @@ class Invoice:
     amount: str
     paid: str
 
-def convert_data(data):
-    invoices = []
+    @staticmethod
+    def convert_data(data):
+        invoices = []
 
-    for list in data:
-        d = [d.strip() for field in list.split(',')]
-        invoice = Invoice(*d)
-        invoices.append(invoice)
-    return invoices
+        for list in data:
+            d = [list.strip() for field in list.split(',')]
+            invoice = Invoice(*d)
+            invoices.append(invoice)
+        return invoices
